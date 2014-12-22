@@ -1,6 +1,6 @@
 def get_hashtags(post)
   # get all valid hashtags along with inline hashtags like "in#line" and "#in#line"
-  matches = post.scan(/#[a-zA-Z][\w#]*/)
+  matches = post.scan(/#+[a-zA-Z][\w#]*/)
 
   # filter inline hashtags without leading hashtag like "in#line"
   matches.delete_if do |match|
@@ -9,9 +9,12 @@ def get_hashtags(post)
 
   # filter inline hashtags with leading hashtag like "#in#line"
   matches.delete_if do |match|
-    true if (match =~ /^#[a-zA-Z][\w]*$/).nil?
+    true if (match =~ /^#+[a-zA-Z][\w]*$/).nil?
   end
+
+  # map out hashtag content
+  matches.map{ |match| match.sub(/^#+/,"") }
 end
 
 # should be "#a12 #He #twitter #G12"
-p get_hashtags("12 abc #a12 #He #abc#def in#line #x#y#z# #twitter #G12 *#?!")
+p get_hashtags("12 abc #a12 ###He #abc#def in#line #x#y#z# #twitter #G12 *#?!")
