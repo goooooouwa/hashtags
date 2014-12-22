@@ -1,5 +1,3 @@
-require 'pry'
-
 def get_hashtags(post)
   # get all valid hashtags along with inline hashtags like "in#line" and "#in#line"
   matches = post.scan(/#[a-zA-Z][\w#]*/)
