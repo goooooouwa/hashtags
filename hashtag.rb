@@ -16,5 +16,5 @@ def get_hashtags(post)
   matches.map{ |match| match.sub(/^#+/,"") }
 end
 
-# should be "#a12 #He #twitter #G12"
+# should return ["a12", "He", "twitter", "G12"]
 p get_hashtags("12 abc #a12 ###He #abc#def in#line #x#y#z# #twitter #G12 *#?!")
