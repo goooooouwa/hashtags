@@ -9,5 +9,6 @@ class TestGetHashtags < Test::Unit::TestCase
     assert_equal(get_hashtags("#abc#def #x#y#z# #twitter"), ["twitter"])
     assert_equal(get_hashtags("in#line #twitter"), ["twitter"])
     assert_equal(get_hashtags("#G12 *#?!"), ["G12"])
+    assert_equal(get_hashtags("abc #a!*?"), ["a!*?"])
   end
 end
